@@ -13,7 +13,8 @@ const authMiddleware= async (req,res,next) => {
 
         //now working with token
         //let nameAuthHeader = "Bearer ghgjhgvrbvabnvjfbhuriavnj"
-        let token = authHeader.split(" ");
+        let token = authHeader.split(" ")[1];
+        console.log(token);
         const decoded = jwt.verify(token,process.env.SECRET_KEY);
         const user = await User.findById(decoded.id).select("-password");
         //without password
