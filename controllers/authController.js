@@ -52,7 +52,7 @@ const login = async (req,res)=>{
         //generate token
         const token= jwt.sign({ //{data to be encoded,secret key, expiration time}
             id:existingUser._id
-        },process.env.SECRET_KEY,{expiresIn:"1d"});
+        },process.env.SECRET_KEY,{expiresIn:"2m"});
         
         res.json({
             succes:true,

@@ -1,4 +1,4 @@
-for 1st commit:-
+-> for 1st commit:-
 git init
 git add .
 git commit -m "Initial commit"
@@ -6,7 +6,13 @@ git branch -M main
 git remote add origin https://github.com/YOUR_USERNAME/MySQL-Lab.git
 git push -u origin main
 
-for 2nd commit:-
+-> for 2nd commit:-
 git add .
 git commit -m "Added Task 4 queries"
-git push
+git push / git push origin main
+
+
+-> To remove files from git without deleting them from the computer
+git rm -r --cached node_modules
+git rm --cached .env
+
