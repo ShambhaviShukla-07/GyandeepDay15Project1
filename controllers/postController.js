@@ -61,7 +61,7 @@ const getMyPost = async (req,res)=>{
     try{
         const posts = await Post.find({user: req.user._id});
         if(posts.length ==0){
-            res.json({
+            return res.json({
                 message: "No posts yet"
             })
         }
@@ -70,6 +70,31 @@ const getMyPost = async (req,res)=>{
             message:"Your Posts:",
             yourTotalPosts: posts.length,
             posts
+        })
+    }
+    catch(err){
+        res.status(500).json({
+            success: false,
+            message: "Unable to fetch your posts",
+            error: err.message
+        });
+    }
+}
+
+const getSinglePost = async (req,res)=>{
+    try{
+        const {id} = req.params;
+        const post = await Post.findById(id);
+        if(!post){
+            return res.status(401).json({
+                success: false,
+                message: "Post Not Found"
+            })
+        }
+        res.status(201).json({
+            success: true, 
+            message:"Post Found:",
+            post
         })
     }
     catch(err){
